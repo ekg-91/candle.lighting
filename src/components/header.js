@@ -1,51 +1,52 @@
-import React from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import './style.scss';
+const Header = ({ siteTitle, siteDescription }) => (
+  <div
+    style={{
+      background: `rebeccapurple`,
+    }}
+  >
+    <div
+      style={{
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`,
+      }}
+    >
+      <h1 style={{ margin: 0 }}>
+        <Link
+          to="/"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+            fontSize: `30px`,
+          }}
+        >
+          {siteTitle}: Light a Candle for Dinner or Prayers
+        </Link>
+      </h1>
+      <h2 
+        style={{ 
+          color: `white`,
+          fontSize: `24px`,
+        }}
+      >
+        {siteDescription}
+      </h2>
+    </div>
+  </div>
+)
 
-import gatsbyLogo from '../images/gatsby-icon.png';
-import bulmaLogo from '../images/bulma-logo.png';
-import Navbar from './navbar';
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+  siteDescription: PropTypes.string,
+}
 
-const Header = ({ siteTitle }) => (
-	<section className="hero gradientBg is-fullheight-with-navbar">
-		<Navbar />
-		<div className="hero-body">
-			<div className="container center">
-				<article className="media">
-					<figure className="is-left">
-						<span className="icon is-large ">
-							<img src={gatsbyLogo} alt="gatsby-logo" />
-						</span>
-					</figure>
-					<figure className="is-left">
-						<span className="icon is-large">
-							<img src={bulmaLogo} alt="bulma-logo" />
-						</span>
-					</figure>
-					<div className="media-content">
-						<div className="content">
-							<h1 className="is-uppercase is-size-1 has-text-white">
-								Hello from Bulma + Gatsby
-							</h1>
-							<p className="subtitle has-text-white is-size-3">
-								A Bulma CSS + GatsbyJS Starter Kit{' '}
-								<a
-									className="button is-info is-inverted"
-									href="https://github.com/amandeepmittal/gatsby-bulma-quickstart"
-								>
-									<span className="icon">
-										<FaGithub size="fa-2x" />
-									</span>
-									<span>Download</span>
-								</a>
-							</p>
-						</div>
-					</div>
-				</article>
-			</div>
-		</div>
-	</section>
-);
+Header.defaultProps = {
+  siteTitle: ``,
+  siteDescription: ``,
+}
 
-export default Header;
+export default Header
